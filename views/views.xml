@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="kayak-ya.list">
+      <field name="name">kayak-ya list</field>
+      <field name="model">kayak-ya.kayak-ya</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="kayak-ya.action_window">
+      <field name="name">kayak-ya window</field>
+      <field name="res_model">kayak-ya.kayak-ya</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="kayak-ya.action_server">
+      <field name="name">kayak-ya server</field>
+      <field name="model_id" ref="model_kayak-ya_kayak-ya"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="kayak-ya" id="kayak-ya.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="kayak-ya.menu_1" parent="kayak-ya.menu_root"/>
+    <menuitem name="Menu 2" id="kayak-ya.menu_2" parent="kayak-ya.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="kayak-ya.menu_1_list" parent="kayak-ya.menu_1"
+              action="kayak-ya.action_window"/>
+    <menuitem name="Server to list" id="kayak-ya" parent="kayak-ya.menu_2"
+              action="kayak-ya.action_server"/>
+-->
+  </data>
+</odoo>
