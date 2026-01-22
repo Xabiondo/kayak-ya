@@ -1,22 +1,12 @@
-# -*- coding: utf-8 -*-
-# from odoo import http
 
 
-# class Kayak-ya(http.Controller):
-#     @http.route('/kayak-ya/kayak-ya', auth='public')
-#     def index(self, **kw):
-#         return "Hello, world"
+from odoo import http
+from odoo.http import request
 
-#     @http.route('/kayak-ya/kayak-ya/objects', auth='public')
-#     def list(self, **kw):
-#         return http.request.render('kayak-ya.listing', {
-#             'root': '/kayak-ya/kayak-ya',
-#             'objects': http.request.env['kayak-ya.kayak-ya'].search([]),
-#         })
+class KayakController(http.Controller):
+    @http.route('/api/kayak/bookings' , type='json' , auth='public')
 
-#     @http.route('/kayak-ya/kayak-ya/objects/<model("kayak-ya.kayak-ya"):obj>', auth='public')
-#     def object(self, obj, **kw):
-#         return http.request.render('kayak-ya.object', {
-#             'object': obj
-#         })
-
+    #Este método es inseguro , una persona sin autenticar puede descargarse la base de datos, tenemos que darle una vuelta equipo. 
+    def get_bookings(self):
+        bookings = request.env['kayak.booking'].sudo().search_read([] , ['name' , 'start_date' , 'state'])
+        return {'status': 'success', 'data': bookings}
