@@ -1,6 +1,8 @@
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
+
 from datetime import datetime , timedelta
+
 
 class KayakBooking(models.Model):
     _name="kayak.booking"
@@ -20,9 +22,11 @@ class KayakBooking(models.Model):
     def _compute_end_date(self):
         for record in self:
             if record.start_date and record.service_id:
+
                 record.end_date= record.start_date + timedelta(hours = record.service_id.duration)
             else:
                 record.end_date = record.start_date
+
 
     @api.constrains("start_date")
     def _check_dates(self):
