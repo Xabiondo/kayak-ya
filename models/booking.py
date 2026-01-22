@@ -1,4 +1,4 @@
-from odoo import models. fields, api, _
+from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 from datetime import datetime
 
@@ -17,13 +17,13 @@ class KayakBooking(models.Model):
     invoice_id= fields.Many2one("account.move", string="Factura Vinculada", readonly=True)
 
     @api.depends("start_date", "service_id.duration")
-    def_compute_end_date(self):
+    def _compute_end_date(self):
         for record in self:
             if record.start_date and record.service_id:
                 record.end_date=record.start_date
 
     @api.constrains("start_date")
-    def_check_dates(self):
+    def _check_dates(self):
         for record in self:
             if record.start_date < fields.Datetime.now():
                 raise ValidationError("Fecha no valida.")
@@ -32,7 +32,9 @@ class KayakBooking(models.Model):
         self.state="confirmed"
         self._create_invoice()
 
-        def_create_invoice(self):
-            invoice:vals={"move_type":"out_invoice", "partner_id":self.partner_id.id,
-                "invoice_line_ids": [(0,0,{"name":self.service_id.name,"quantity":1,"price_unit":self.service_id.price})]}
-            invoice=self.env["account.move]"]    
+    def _create_invoice(self):
+        invoice:vals={"move_type":"out_invoice", "partner_id":self.partner_id.id,
+            "invoice_line_ids": [(0,0,{"name":self.service_id.name,"quantity":1,"price_unit":self.service_id.price})]}
+        invoice=self.env["account.move"].create(invoice_vals)
+        self.invoice_id=invoice.id
+        self.state="invoiced"
