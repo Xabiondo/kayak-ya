@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_kayak_root" name="Kayak Ya" web_icon="kayak_ya,static/description/icon.png" sequence="10"/>
+    <menutiem id="menu_kayak_operations" name="Operaciones" parent="menu_kayak_root" sequence="10"/>
+    <menuitem id="menu_kayak_config" name="Configuración" parent="manu_kayak_root" sequence="20" groups="kayak_ya.group_kayak_manager"/>
+    <menutiem id="menu_kayak_booking" name="Reservas" parent="menu_kayak_operations" action="action_kayak_booking" sequence="10"/>
+    <menutitem id="menu_kayak_service" name="Servicios" parent="menu_kayak_config" action="action_kayak_service" sequence="10"/>
+</odoo>
