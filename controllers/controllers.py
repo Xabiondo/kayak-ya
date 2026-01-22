@@ -4,9 +4,14 @@ from odoo import http
 from odoo.http import request
 
 class KayakController(http.Controller):
-    @http.route('/api/kayak/bookings' , type='json' , auth='public')
+    @http.route('/api/kayak/bookings' , type='json' , auth='user')
 
-    #Este método es inseguro , una persona sin autenticar puede descargarse la base de datos, tenemos que darle una vuelta equipo. 
+    # Así protegemos las rutas efectivamente 
+
     def get_bookings(self):
-        bookings = request.env['kayak.booking'].sudo().search_read([] , ['name' , 'start_date' , 'state'])
-        return {'status': 'success', 'data': bookings}
+        bookings = request.env['kayak.booking'].search_read(
+            [] , 
+            ['name' , 'start_date' , 'state']
+
+        )
+        return {'status' : 'success' , 'data' : bookings}
