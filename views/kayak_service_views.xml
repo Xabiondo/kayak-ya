@@ -45,6 +45,6 @@
     <record id="action_kayak_service" model="ir.actions.act_window">
         <field name="name">Servicios de kayak</field>
         <field name="res_model">kayak.service</field>
-        <field name="view_model">tree,form</field>
+        <field name="view_mode">tree,form</field>
     </record>
 </odoo>

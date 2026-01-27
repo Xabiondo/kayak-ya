@@ -6,7 +6,7 @@ from datetime import datetime , timedelta
 
 class KayakBooking(models.Model):
     _name="kayak.booking"
-    _descripcion="Reserva de Kayak"
+    _description="Reserva de Kayak"
     _inherit=["mail.thread","mail.activity.mixin"] 
 
     name= fields.Char(string="Referencia", required=True, copy=False, readonly=True, default="Nuevo")

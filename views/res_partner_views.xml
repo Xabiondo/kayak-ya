@@ -3,7 +3,7 @@
     <record id="view_partner_from_kayak_inherit" model="ir.ui.view">
         <field name="name">res.partner.from.kayak.inherit</field>
         <field name="model">res.partner</field>
-        <field name="inherit_id" ref="base.view_partner_from"/>
+        <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
             <notebook position="inside">
                 <page string="Reservas de Kayak">
