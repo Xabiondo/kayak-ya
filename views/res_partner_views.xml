@@ -5,6 +5,10 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="is_vip"/>
+            </xpath>
             <notebook position="inside">
                 <page string="Reservas de Kayak">
                     <field name="booking_ids">
@@ -12,6 +16,7 @@
                             <field name="name"/>
                             <field name="service_id"/>
                             <field name="start_date"/>
+                            <field name="price_total"/>
                             <field name="state"/>
                         </tree>
                     </field>

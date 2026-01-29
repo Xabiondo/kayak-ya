@@ -1,7 +1,7 @@
 from odoo import models , fields
 
-class KayakService(models.Model):
-    _name = "kayak.service"
+class ResService(models.Model):
+    _name = "res.service"
     _description = "servicio de alquiler de Kayak" 
 
     name = fields.Char(string ="nombre del servicio" , required = True)

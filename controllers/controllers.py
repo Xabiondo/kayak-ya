@@ -9,7 +9,7 @@ class KayakController(http.Controller):
     # Así protegemos las rutas efectivamente 
 
     def get_bookings(self):
-        bookings = request.env['kayak.booking'].search_read(
+        bookings = request.env['res.booking'].search_read(
             [] , 
             ['name' , 'start_date' , 'state']
 
