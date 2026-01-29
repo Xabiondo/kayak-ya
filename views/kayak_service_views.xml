@@ -30,6 +30,7 @@
             </form>
         </field>
     </record>
+
     <record id="view_kayak_service_tree" model="ir.ui.view">
         <field name="name">Kayak Service Tree</field>
         <field name="model">res.service</field>
@@ -42,7 +43,8 @@
             </tree>
         </field>
     </record>
-    <record id="action_kayak_service" model="ir.actions.act_window">
+
+    <record id="action_service" model="ir.actions.act_window">
         <field name="name">Servicios de kayak</field>
         <field name="res_model">res.service</field>
         <field name="view_mode">tree,form</field>

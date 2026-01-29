@@ -1,3 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_kayak_booking_all,kayak.booking.all,model_kayak_booking,,1,1,1,1
-access_kayak_service_all,kayak.service.all,model_kayak_service,,1,1,1,1
+access_res_booking_user,res.booking user,model_res_booking,group_kayak_user,1,1,1,1
+access_res_booking_manager,res.booking manager,model_res_booking,group_kayak_manager,1,1,1,1
+access_res_service_user,res.service user,model_res_service,group_kayak_user,1,0,0,0
+access_res_service_manager,res.service manager,model_res_service,group_kayak_manager,1,1,1,1

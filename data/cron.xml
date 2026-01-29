@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="ir_con_auto_cancel_bokings" model="ir.cron">
-        <field name="name">Gestion Reservas: Cancelar Expiradas(24h)</field>
+    <record id="ir_cron_auto_cancel_bookings" model="ir.cron">
+        <field name="name">Gestión Reservas: Cancelar Expiradas (24h)</field>
         <field name="model_id" ref="model_res_booking"/>
         <field name="state">code</field>
-        <field name="code">model.check_expired_bookings()</field>
+        <field name="code">model._check_expired_bookings()</field> 
         <field name="interval_number">1</field>
-        <field name="inreval_type">days</field><field name="numbercall">-1</field>
+        <field name="interval_type">days</field> <field name="numbercall">-1</field>
         <field name="active">True</field>
     </record>
 </odoo>
