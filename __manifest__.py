@@ -13,10 +13,12 @@
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
+        'data/cron.xml' , 
         'views/kayak_service_views.xml',
         'views/kayak_booking_views.xml',
         'views/res_partner_views.xml',
         'views/menu.xml',
+        'reports/booking_report.xml'
     ],
     'application': True,
     'installable': True,
