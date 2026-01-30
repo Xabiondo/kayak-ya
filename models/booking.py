@@ -73,15 +73,38 @@ class Booking(models.Model):
         self.state = 'confirmed'
 
     def _create_invoice(self):
+       
+        journal = self.env['account.journal'].search([
+            ('type', '=', 'sale'), 
+            ('company_id', '=', self.env.company.id)
+        ], limit=1)
+        
+        account_id = journal.default_account_id.id
+       
+        if not account_id:
+          
+            account = self.env['account.account'].search([
+                ('account_type', '=', 'income'), 
+                ('company_id', '=', self.env.company.id),
+                ('deprecated', '=', False)
+            ], limit=1)
+            account_id = account.id
+
+        if not account_id:
+            raise ValidationError("No se ha encontrado una cuenta contable de ingresos para generar la factura.")
+
         invoice_vals = {
             'move_type': 'out_invoice',
             'partner_id': self.partner_id.id,
+            'journal_id': journal.id, 
             'invoice_line_ids': [(0, 0, {
                 'name': f"Reserva: {self.service_id.name}",
                 'quantity': 1,
-                'price_unit': self.price_total, 
+                'price_unit': self.price_total,
+                'account_id': account_id,  
             })]
         }
+        
         invoice = self.env['account.move'].create(invoice_vals)
         self.invoice_id = invoice.id
 

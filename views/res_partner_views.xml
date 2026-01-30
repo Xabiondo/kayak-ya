@@ -6,9 +6,10 @@
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
 
-            <xpath expr="//field[@name='vat']" position="after">
-                <field name="is_vip"/>
+            <xpath expr="//field[@name='category_id']" position="after">
+                <field name="is_vip" widget="boolean_toggle" string=" Es VIP (10% Dto)"/> 
             </xpath>
+
             <notebook position="inside">
                 <page string="Reservas de Kayak">
                     <field name="booking_ids">
@@ -25,4 +26,3 @@
         </field>
     </record>
 </odoo>
-
